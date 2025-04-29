@@ -159,7 +159,7 @@
                                     <small class="text-muted">{{ $project->issues_count }} issues</small>
                                 </div>
                                 <span class="badge rounded-pill bg-light text-dark">
-                                    {{ $project->issues()->where('status', 'resolved')->count() }} / {{ $project->issues_count }}
+                                    {{ $project->issues()->whereIn('status', ['resolved', 'closed'])->count() }} / {{ $project->issues_count }}
                                 </span>
                             </a>
                         @endforeach

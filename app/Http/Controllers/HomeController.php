@@ -18,7 +18,7 @@ class HomeController extends Controller
         $projectsCount = Project::count();
         $issuesCount = Issue::count();
         $openIssuesCount = Issue::where('status', 'open')->count();
-        $resolvedIssuesCount = Issue::where('status', 'resolved')->count();
+        $resolvedIssuesCount = Issue::whereIn('status', ['resolved', 'closed'])->count();
         $myAssignedIssuesCount = Issue::where('assignee_id', $user->id)->where('status', '!=', 'closed')->count();
 
         // Recent Activity
