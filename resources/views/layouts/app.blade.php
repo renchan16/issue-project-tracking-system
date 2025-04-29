@@ -30,12 +30,18 @@
             font-family: 'Poppins', sans-serif;
             padding-bottom: 2rem;
             min-height: 100vh;
+            padding-top: 70px; /* Added to prevent content from hiding behind fixed navbar */
         }
 
         .navbar {
             background-color: white !important;
             box-shadow: 0 2px 10px rgba(0,0,0,0.06);
             padding: 0.8rem 0;
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 0;
+            z-index: 1030;
         }
 
         .navbar-brand {
