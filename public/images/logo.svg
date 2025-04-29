@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="40" viewBox="0 0 120 40">
+  <style>
+    .logo-text { font-family: Arial, sans-serif; font-weight: bold; font-size: 24px; }
+    .accent { fill: #4F46E5; }
+    .main { fill: #111827; }
+  </style>
+  <text x="5" y="28" class="logo-text main">Track</text>
+  <text x="70" y="28" class="logo-text accent">r</text>
+  <circle cx="90" cy="18" r="5" class="accent" />
+</svg> 

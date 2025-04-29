@@ -18,4 +18,12 @@ class Project extends Model
     {
         return $this->hasMany(Issue::class);
     }
+    
+    /**
+     * Get the users associated with the project.
+     */
+    public function members()
+    {
+        return $this->belongsToMany(User::class, 'project_user_pivot');
+    }
 }

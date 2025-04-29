@@ -60,8 +60,8 @@ class ProjectPolicy
      */
     public function delete(User $user, Project $project): bool
     {
-        // Admin handled by before(). Allow manager.
-        return $user->isManager();
+        // Admin handled by before(). Deny all others.
+        return false;
     }
 
     /**

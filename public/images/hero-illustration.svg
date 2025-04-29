@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <style>
+    .bg-rect { fill: #EEF2FF; }
+    .primary { fill: #3A86FF; }
+    .secondary { fill: #2563EB; }
+    .light { fill: #F9FAFB; }
+    .dark { fill: #111827; }
+    .accent { fill: #4F46E5; }
+    .card { fill: white; filter: drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.08)); }
+    .text-line { fill: #CBD5E1; }
+    .chart-bar { fill: #3A86FF; opacity: 0.8; }
+    .chart-dot { fill: #2563EB; }
+    .chart-line { stroke: #3A86FF; stroke-width: 2; fill: none; }
+    .progress-bg { fill: #F1F5F9; }
+    .progress-fill { fill: #10B981; }
+  </style>
+  <!-- Background -->
+  <rect class="bg-rect" x="0" y="0" width="600" height="400" rx="12" />
+  
+  <!-- Main Dashboard Card -->
+  <rect class="card" x="30" y="40" width="540" height="320" rx="12" />
+
+  <!-- Navigation Sidebar -->
+  <rect class="primary" x="30" y="40" width="80" height="320" rx="12 0 0 12" />
+  <circle class="light" cx="70" cy="80" r="20" />
+  <rect class="light" x="50" cy="120" width="40" height="8" rx="4" />
+  <rect class="light" x="50" y="140" width="40" height="8" rx="4" />
+  <rect class="light" x="50" y="160" width="40" height="8" rx="4" />
+  <rect class="light" x="50" y="180" width="40" height="8" rx="4" />
+  <rect class="light" x="50" y="200" width="40" height="8" rx="4" />
+  <rect class="accent" x="50" y="220" width="40" height="8" rx="4" />
+  
+  <!-- Content Area -->
+  <!-- Header -->
+  <rect class="light" x="140" y="60" width="200" height="25" rx="4" />
+  <rect class="text-line" x="140" y="95" width="120" height="10" rx="4" />
+  
+  <!-- Stats Cards -->
+  <rect class="card" x="140" y="125" width="120" height="80" rx="8" />
+  <rect class="card" x="275" y="125" width="120" height="80" rx="8" />
+  <rect class="card" x="410" y="125" width="120" height="80" rx="8" />
+  <rect class="primary" x="150" y="135" width="30" height="30" rx="15" />
+  <rect class="secondary" x="285" y="135" width="30" height="30" rx="15" />
+  <rect class="accent" x="420" y="135" width="30" height="30" rx="15" />
+  <rect class="text-line" x="150" y="175" width="70" height="8" rx="4" />
+  <rect class="text-line" x="285" y="175" width="70" height="8" rx="4" />
+  <rect class="text-line" x="420" y="175" width="70" height="8" rx="4" />
+  <rect class="dark" x="150" y="190" width="50" height="10" rx="4" />
+  <rect class="dark" x="285" y="190" width="50" height="10" rx="4" />
+  <rect class="dark" x="420" y="190" width="50" height="10" rx="4" />
+  
+  <!-- Chart Area -->
+  <rect class="light" x="140" y="220" width="390" height="130" rx="8" />
+  <rect class="text-line" x="150" y="235" width="100" height="10" rx="4" />
+  
+  <!-- Chart -->
+  <polyline class="chart-line" points="160,295 210,270 260,290 310,255 360,265 410,240 460,260" />
+  <circle class="chart-dot" cx="160" cy="295" r="4" />
+  <circle class="chart-dot" cx="210" cy="270" r="4" />
+  <circle class="chart-dot" cx="260" cy="290" r="4" />
+  <circle class="chart-dot" cx="310" cy="255" r="4" />
+  <circle class="chart-dot" cx="360" cy="265" r="4" />
+  <circle class="chart-dot" cx="410" cy="240" r="4" />
+  <circle class="chart-dot" cx="460" cy="260" r="4" />
+  
+  <!-- Progress Bars -->
+  <rect class="progress-bg" x="150" y="320" width="100" height="10" rx="5" />
+  <rect class="progress-fill" x="150" y="320" width="75" height="10" rx="5" />
+  <rect class="progress-bg" x="265" y="320" width="100" height="10" rx="5" />
+  <rect class="progress-fill" x="265" y="320" width="60" height="10" rx="5" />
+  <rect class="progress-bg" x="380" y="320" width="100" height="10" rx="5" />
+  <rect class="progress-fill" x="380" y="320" width="90" height="10" rx="5" />
+</svg> 

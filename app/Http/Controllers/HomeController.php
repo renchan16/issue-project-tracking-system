@@ -15,30 +15,43 @@ class HomeController extends Controller
         $user = Auth::user();
 
         // Summary Counts
-        $totalProjects = Project::count();
+        $projectsCount = Project::count();
+        $issuesCount = Issue::count();
         $openIssuesCount = Issue::where('status', 'open')->count();
-        $myAssignedIssuesCount = Issue::where('assignee_id', $user->id)->where('status', '!= ', 'closed')->count();
+        $resolvedIssuesCount = Issue::where('status', 'resolved')->count();
+        $myAssignedIssuesCount = Issue::where('assignee_id', $user->id)->where('status', '!=', 'closed')->count();
 
         // Recent Activity
         $recentIssues = Issue::with('project')->latest('updated_at')->take(5)->get();
         $recentProjects = Project::latest()->take(5)->get();
 
-        // My Open Issues
-        $myOpenIssues = Issue::with('project')
-                             ->where('assignee_id', $user->id)
-                             ->where('status', 'open')
-                             ->latest()
-                             ->take(5)
-                             ->get();
+        // Open Issues for display
+        $openIssues = Issue::with('project')
+                         ->where('status', 'open')
+                         ->latest()
+                         ->take(5)
+                         ->get();
+
+        // User's projects
+        $projects = Project::withCount('issues')
+                        ->whereHas('members', function($query) use ($user) {
+                            $query->where('users.id', $user->id);
+                        })
+                        ->latest()
+                        ->take(5)
+                        ->get();
 
         return view('home', compact(
             'user',
-            'totalProjects',
+            'projectsCount',
+            'issuesCount',
             'openIssuesCount',
+            'resolvedIssuesCount',
             'myAssignedIssuesCount',
             'recentIssues',
             'recentProjects',
-            'myOpenIssues'
+            'openIssues',
+            'projects'
         ));
     }
 } 
