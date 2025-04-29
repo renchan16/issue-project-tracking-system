@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
@@ -44,5 +45,60 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    /**
+     * Get the issues reported by the user.
+     */
+    public function reportedIssues()
+    {
+        return $this->hasMany(Issue::class, 'reporter_id');
+    }
+
+    /**
+     * Get the issues assigned to the user.
+     */
+    public function assignedIssues()
+    {
+        return $this->hasMany(Issue::class, 'assignee_id');
+    }
+
+    /**
+     * Get the comments written by the user.
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    // Role checking methods
+    public function hasRole(string $role): bool
+    {
+        return $this->role === $role;
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->hasRole('admin');
+    }
+
+    public function isManager(): bool
+    {
+        return $this->hasRole('manager');
+    }
+
+    public function isDeveloper(): bool
+    {
+        return $this->hasRole('developer');
+    }
+
+    public function isReporter(): bool
+    {
+        return $this->hasRole('reporter');
+    }
+
+    public function isViewer(): bool
+    {
+        return $this->hasRole('viewer');
     }
 }
