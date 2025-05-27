@@ -20,21 +20,36 @@ class AuthController extends Controller
         return view('auth.signup');
     }
 
+    // public function login(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'email' => 'required|email',
+    //         'password' => 'required',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return redirect()->back()
+    //             ->withErrors($validator)
+    //             ->withInput();
+    //     }
+
+    //     $credentials = $request->only('email', 'password');
+    //     $remember = $request->has('remember');
+
+    //     if (Auth::attempt($credentials, $remember)) {
+    //         $request->session()->regenerate();
+    //         return redirect()->intended('/home');
+    //     }
+
+    //     return back()->withErrors([
+    //         'email' => 'The provided credentials do not match our records.',
+    //     ])->withInput();
+    // }
+
     public function login(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required',
-        ]);
-
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
         $credentials = $request->only('email', 'password');
-        $remember = $request->has('remember');
+        $remember = $request->boolean('remember');
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();
@@ -46,30 +61,41 @@ class AuthController extends Controller
         ])->withInput();
     }
 
-    public function signup(Request $request)
+    // public function signup2(Request $request)
+    // {
+    //     $validator = Validator::make($request->all(), [
+    //         'name' => 'required|string|max:255',
+    //         'email' => 'required|string|email|max:255|unique:users',
+    //         'password' => 'required|string|min:8|confirmed',
+    //     ]);
+
+    //     if ($validator->fails()) {
+    //         return redirect()->back()
+    //             ->withErrors($validator)
+    //             ->withInput();
+    //     }
+
+    //     $user = User::create([
+    //         'name' => $request->name,
+    //         'email' => $request->email,
+    //         'password' => Hash::make($request->password),
+    //     ]);
+
+    //     Auth::login($user);
+
+    //     return redirect('/home');
+    // }
+
+    public function signup(SignupRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
+        $signUpData = $request->validated();
+        unset($signUpData['password_confirmation']);
 
-        if ($validator->fails()) {
-            return redirect()->back()
-                ->withErrors($validator)
-                ->withInput();
-        }
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
+        $user = User::create($signUpData);
         Auth::login($user);
-
         return redirect('/home');
     }
+
 
     public function logout(Request $request)
     {

@@ -18,7 +18,7 @@
                             <div class="form-floating">
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" 
                                     id="name" name="name" value="{{ old('name') }}" 
-                                    required autofocus placeholder="John Doe">
+                                     autofocus placeholder="John Doe">
                                 <label for="name">John Doe</label>
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
@@ -59,7 +59,7 @@
                             <div class="form-floating">
                                 <input type="password" class="form-control" 
                                     id="password_confirmation" name="password_confirmation" 
-                                    required placeholder="Confirm your password">
+                                     placeholder="Confirm your password">
                                 <label for="password_confirmation">Confirm your password</label>
                             </div>
                         </div>
